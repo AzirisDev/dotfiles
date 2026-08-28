@@ -2,10 +2,16 @@
 
 # Description: Link dotfiles to home directory
 
+create_links() {
+	for file in "${@}"; do
+		local filename=${file#.}
+		ln -sf ~/dotfiles/"${filename}" file
+	done
+}
 mkdir -p ~/.config
 
-ln -sf ~/dotfiles/bashrc ~/.bashrc
-ln -sf ~/dotfiles/vimrc ~/.vimrc
-ln -sf ~/dotfiles/starship.toml ~/.config/starship.toml
+files=("bashrc" "vimrc" "config/starship.toml")
+
+create_links "${files[@]}"
 
 echo Dotfiles linked!
