@@ -10,7 +10,7 @@ create_links() {
 }
 mkdir -p ~/.config
 
-files=("bashrc" "vimrc" "config/starship.toml")
+files=("bashrc" "vimrc" "starship.toml")
 
 create_links "${files[@]}"
 
